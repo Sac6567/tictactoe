@@ -6,7 +6,7 @@ import { calculateWinner } from './helpers';
 
 import './styles/root.scss';
 
-const NEW_GAME = [{ board: Array(9).fill(null), isNext: true }];
+const NEW_GAME = [{ board: Array(9).fill(null), isXNext: true }];
 
 const App = () => {
   const [history, setHistory] = useState(NEW_GAME);
@@ -23,14 +23,17 @@ const App = () => {
     setHistory(prev => {
       const last = prev[prev.length - 1];
 
-      const newBoard = last.board.map((Square, pos) => {
+      const newBoard = last.board.map((square, pos) => {
         if (pos === position) {
-          return last.isNext ? 'X' : 'O';
+          return last.isXNext ? 'X' : 'O';
         }
-        return Square;
+
+        return square;
       });
-      return prev.concat({ board: newBoard, isNext: !last.isNext });
+
+      return prev.concat({ board: newBoard, isXNext: !last.isXNext });
     });
+
     setCurrentMove(prev => prev + 1);
   };
 
@@ -59,9 +62,9 @@ const App = () => {
         onClick={onNewGame}
         className={`btn-reset ${winner ? 'active' : ''}`}
       >
-        Start New Game
+        Start new game
       </button>
-      <h2 style={{ fontWeight: 'normal' }}>Current Game History</h2>
+      <h2 style={{ fontWeight: 'normal' }}>Current game history</h2>
       <History history={history} moveTo={moveTo} currentMove={currentMove} />
       <div className="bg-balls" />
     </div>
