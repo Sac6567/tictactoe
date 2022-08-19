@@ -1,17 +1,4 @@
-# http://tictactoe-flesh.surge.sh/
-
-
-
-
-
-
-
-
-
-
-
-
-
+# [TicTacToe Game Link](https://tictactoe-flesh.surge.sh/)
 
 # Nano React App Default Javascript Template
 
